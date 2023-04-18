@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus_take</title>
+
+    <style>
+        #input_tool{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="input_tool">
+        <input type="text" id="get_time">
+        <br>
+        <button id="calculate">start</button>
+    </div>
+    
+    <script>
+        let get_time = document.getElementById("get_time")
+        let calculate = document.getElementById("calculate")
+        calculate.addEventListener("click",function(){
+            let time = new Date()
+            let minuters = time.getMinutes()
+            let hours = time.getHours()
+            let seconds = time.getSeconds()
+
+            let further_time = minuters+parseInt(get_time.value)
+            if(further_time<=60){
+                hours=hours+1
+                further_time = further_time-1
+            }
+            document.write(hours.toString()+"："+further_time.toString())
+        })
+    </script>
+</body>
+</html>
