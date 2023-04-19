@@ -13,6 +13,20 @@
             left: 50%;
             transform: translate(-50%,-50%);
         }
+
+        #calculate{
+            position: absolute;
+            top: 200%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        #get_time{
+            border-radius: 22px;
+            height: 24px;
+
+            border: 2px solid #000000;
+        }
     </style>
 </head>
 <body>
@@ -36,7 +50,7 @@
                 hours=hours+1
                 further_time = further_time-60
             }
-            document.write(hours.toString()+"："+further_time.toString())
+            alert(hours.toString()+"："+further_time.toString())
         })
     </script>
 </body>
