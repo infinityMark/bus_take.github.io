@@ -9,16 +9,19 @@
     <style>
         #input_tool{
             position: absolute;
-            top: 50%;
+            top: 45%;
             left: 50%;
             transform: translate(-50%,-50%);
         }
 
         #calculate{
             position: absolute;
-            top: 200%;
+            top: 240%;
             left: 50%;
             transform: translate(-50%,-50%);
+
+            border: 0px;
+            background-color: white;
         }
 
         #get_time{
@@ -26,6 +29,11 @@
             height: 24px;
 
             border: 2px solid #000000;
+            text-align: center;
+        }
+
+        #png{
+            width: 56px;
         }
     </style>
 </head>
@@ -33,25 +41,45 @@
     <div id="input_tool">
         <input type="text" id="get_time">
         <br>
-        <button id="calculate">start</button>
+        <button id="calculate"><img src="https://raw.githubusercontent.com/infinityMark/bus_take.github.io/main/send.png" alt="" id="png"></button>
     </div>
     
     <script>
         let get_time = document.getElementById("get_time")
         let calculate = document.getElementById("calculate")
+        let png = document.getElementById("png")
         calculate.addEventListener("click",function(){
             let time = new Date()
             let minuters = time.getMinutes()
             let hours = time.getHours()
             let seconds = time.getSeconds()
+            let add_hours
 
             let further_time = minuters+parseInt(get_time.value)
             if(further_time>=60){
-                hours=hours+1
-                further_time = further_time-60
+                add_hours = further_time/60
+                if(add_hours%60 != 0){
+                    // let add_minuters = add_hours%60
+                    let final_hours = add_hours.toString()
+                    // console.log(final_hours)
+                    
+                    hours=hours+parseInt(final_hours[0])
+                    further_time = further_time-60*parseInt(final_hours[0]) 
+                    
+                    get_time.value=" "
+                    alert(hours.toString()+"："+further_time.toString())
+                }
             }
-            alert(hours.toString()+"："+further_time.toString())
+            if(further_time<10){
+                get_time.value=" "
+                alert(hours.toString()+"："+"0"+further_time.toString())
+            }
+            else{
+                get_time.value=" "
+                alert(hours.toString()+"："+further_time.toString())
+            }
         })
+
     </script>
 </body>
 </html>
