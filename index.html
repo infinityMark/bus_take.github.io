@@ -15,6 +15,8 @@
             font-family: 'Noto Sans HK', sans-serif;
         }
         #input_tool{
+            text-align: center;
+            width: 100%;
             position: absolute;
             top: 45%;
             left: 50%;
@@ -34,6 +36,7 @@
         #get_time{
             border-radius: 22px;
             height: 36px;
+            width: 70%;
 
             border: 2px solid #000000;
             border-radius: 22px;
@@ -42,6 +45,14 @@
 
         #png{
             width: 46px;
+        }
+
+        #wait{
+            width: 66px;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%,-50%);
         }
 
         #bus{
@@ -59,6 +70,7 @@
 <body>
     <br>
     <h1 id="time_arrive"></h1>
+    <img src="https://raw.githubusercontent.com/infinityMark/bus_take.github.io/main/bus-stop.png" alt="" id="wait">
     <img src="https://raw.githubusercontent.com/infinityMark/bus_take.github.io/main/bus.png" alt="" id="bus">
     <div id="input_tool">
         <input type="text" id="get_time">
@@ -80,6 +92,11 @@
             let hours = time.getHours()
             let seconds = time.getSeconds()
             let add_hours
+
+            if(bus.style.left="-20%"){
+                bus.style.left = "50%"
+                bus.style.transition = "2s"
+            }
 
             // bus.style.left = "50%"
             // bus.style.transition = "2s"
@@ -104,14 +121,14 @@
                 time_arrive.innerText = hours.toString()+":"+"0"+further_time.toString()
             }
             else{
-                bus.style.left = "50%"
-                bus.style.transition = "2s"
                 get_time.value=" "
                 time_arrive.innerText = hours.toString()+":"+further_time.toString()
             }
 
-            bus.style.left="120%"
-            bus.style.transition="4s"
+            setTimeout(function(){
+                bus.style.left="120%"
+                bus.style.transition="2s"
+            },2500)
         })
 
     </script>
