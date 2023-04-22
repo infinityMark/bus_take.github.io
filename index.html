@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+HK&display=swap" rel="stylesheet">
     <title>Bus_take</title>
 
     <style>
+        body{
+            font-family: 'Ma Shan Zheng', cursive;
+            font-family: 'Noto Sans HK', sans-serif;
+        }
         #input_tool{
             position: absolute;
             top: 45%;
@@ -26,18 +33,33 @@
 
         #get_time{
             border-radius: 22px;
-            height: 24px;
+            height: 36px;
 
             border: 2px solid #000000;
+            border-radius: 22px;
             text-align: center;
         }
 
         #png{
-            width: 56px;
+            width: 46px;
+        }
+
+        #bus{
+            width: 66px;
+            position: absolute;
+            top: 30%;
+            left: -20%;
+            transform: translate(-50%,-50%);
+        }
+        #time_arrive{
+            text-align: center;
         }
     </style>
 </head>
 <body>
+    <br>
+    <h1 id="time_arrive"></h1>
+    <img src="https://raw.githubusercontent.com/infinityMark/bus_take.github.io/main/bus.png" alt="" id="bus">
     <div id="input_tool">
         <input type="text" id="get_time">
         <br>
@@ -48,12 +70,19 @@
         let get_time = document.getElementById("get_time")
         let calculate = document.getElementById("calculate")
         let png = document.getElementById("png")
+        let bus = document.getElementById("bus")
+        let time_arrive = document.getElementById("time_arrive")
         calculate.addEventListener("click",function(){
+            // bus.style.left = "-20%"
+
             let time = new Date()
             let minuters = time.getMinutes()
             let hours = time.getHours()
             let seconds = time.getSeconds()
             let add_hours
+
+            // bus.style.left = "50%"
+            // bus.style.transition = "2s"
 
             let further_time = minuters+parseInt(get_time.value)
             if(further_time>=60){
@@ -67,17 +96,22 @@
                     further_time = further_time-60*parseInt(final_hours[0]) 
                     
                     get_time.value=" "
-                    alert(hours.toString()+"："+further_time.toString())
+                    time_arrive.innerText = hours.toString()+":"+further_time.toString()
                 }
             }
             if(further_time<10){
                 get_time.value=" "
-                alert(hours.toString()+"："+"0"+further_time.toString())
+                time_arrive.innerText = hours.toString()+":"+"0"+further_time.toString()
             }
             else{
+                bus.style.left = "50%"
+                bus.style.transition = "2s"
                 get_time.value=" "
-                alert(hours.toString()+"："+further_time.toString())
+                time_arrive.innerText = hours.toString()+":"+further_time.toString()
             }
+
+            bus.style.left="120%"
+            bus.style.transition="4s"
         })
 
     </script>
