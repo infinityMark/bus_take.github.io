@@ -26,7 +26,7 @@
         #calculate{
             position: absolute;
             top: 240%;
-            left: 50%;
+            left: 70%;
             transform: translate(-50%,-50%);
 
             border: 0px;
@@ -50,13 +50,13 @@
         #wait{
             width: 66px;
             position: absolute;
-            top: 30%;
-            left: 50%;
+            top: 10%;
+            left: 20%;
             transform: translate(-50%,-50%);
         }
 
         #bus{
-            width: 66px;
+            width: 86px;
             position: absolute;
             top: 30%;
             left: -20%;
@@ -65,12 +65,21 @@
         #time_arrive{
             text-align: center;
         }
+
+        #people{
+            width: 56px;
+            position: absolute;
+            top: 30%;
+            left: 48%;
+            transform: translate(-50%,-50%);
+        }
     </style>
 </head>
 <body>
     <br>
     <h1 id="time_arrive"></h1>
-    <img src="https://raw.githubusercontent.com/infinityMark/bus_take.github.io/main/bus-stop.png" alt="" id="wait">
+    <img src="https://raw.githubusercontent.com/infinityMark/bus_take.github.io/main/bus-stop (1).png" alt="" id="wait">
+    <img src="https://raw.githubusercontent.com/infinityMark/bus_take.github.io/main/person-standing.png" alt="" id="people">
     <img src="https://raw.githubusercontent.com/infinityMark/bus_take.github.io/main/bus.png" alt="" id="bus">
     <div id="input_tool">
         <input type="text" id="get_time">
@@ -82,10 +91,20 @@
         let get_time = document.getElementById("get_time")
         let calculate = document.getElementById("calculate")
         let png = document.getElementById("png")
+        let wait = document.getElementById("wait")
         let bus = document.getElementById("bus")
         let time_arrive = document.getElementById("time_arrive")
+        let people = document.getElementById("people")
+
+        wait.style.left="50%"
+        wait.style.top="30%"
+        wait.style.transition="1s"
+
         calculate.addEventListener("click",function(){
             // bus.style.left = "-20%"
+
+            // png.style.width="66px"
+            // png.style.transition="1s"
 
             let time = new Date()
             let minuters = time.getMinutes()
@@ -126,11 +145,12 @@
             }
 
             setTimeout(function(){
+                people.style.display="none"
                 bus.style.left="120%"
                 bus.style.transition="2s"
             },2500)
-        })
 
+        })
     </script>
 </body>
 </html>
